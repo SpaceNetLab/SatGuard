@@ -15,8 +15,8 @@ SatGuard can work in can be run on a real physical server, virtual machine or co
 The above figure is a case of static scenario. For simplicity, we consider the Dishy directly as the sender in the case. Each node is a container instance. In this scenario, the link between the satellite and the ground station is unstable, enabling SatGuard in the upstream and downstream of the link can effectively improve transmission efficiency.
 
 To reproduce the case, configure the `satguard.py` according to your real network and the follow these steps.
-- Execute `python3 satguard.py -l upstream -s static` on the upstream node.
-- Execute `python3 satguard.py -l downstream -s static` on the downstream node.
+- Execute `python3 satguard.py -l upstream -s static -d 0` on the upstream node.
+- Execute `python3 satguard.py -l downstream -s static -d 0` on the downstream node.
 - After both node shows `ready`, the transmission test can begin.
 
 # Show Case 2
@@ -26,9 +26,9 @@ The above figure is a case of dynamic scenario. The solid line represents the co
 
 To reproduce the case, configure the `satguard.py` and scripts about handover according to your real network and then follow these steps.
 - Distribute the handover scripts to the handover manager and related nodes.
-- Execute `python3 satguard.py -l downstream -s dynamic` on the downstream node.
-- Execute `python3 satguard.py -l downstream -s dynamic` on the first upstream node.
-- Execute `python3 satguard.py -l downstream -s dynamic` on the second upstream node.
+- Execute `python3 satguard.py -l downstream -s dynamic -d 0` on the downstream node.
+- Execute `python3 satguard.py -l upstream -s dynamic -d 0` on the first upstream node.
+- Execute `python3 satguard.py -l upstream -s dynamic -d 0` on the second upstream node.
 - After all nodes shows `ready`, the transmission test can begin.
 - Execute `handover.sh` to let the GS connect to satellite 1.
 - Execute `recovery.sh` to let the GS connect to satellite 2.
